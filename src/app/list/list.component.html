@@ -1,0 +1,15 @@
+{{2 | yearpi}}
+
+<ng-container *ngFor="let q of queriesList; let index=index; let isfirst=first;let islast=last;let isodd=odd;let iseven=even;" >
+<app-item [isOdd]="isodd" [isEven]="iseven"
+
+[queryItem]="q" 
+(selectEvent)="querySelected($event)">{{isodd}}</app-item></ng-container>
+
+<!--
+<ng-container *ngFor="let q of queriesList; let index=index; let isfirst=first;let islast=last;let isodd=odd;let iseven=even;" >
+<app-item [isOdd]="isodd" [isEven]="iseven"
+
+[queryItem]="q"  *ngIf="q.status=='public'" 
+(selectEvent)="querySelected($event)">{{isodd}}</app-item></ng-container>
+-->

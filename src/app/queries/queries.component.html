@@ -1,0 +1,15 @@
+
+<div class="row">
+ <div class="col-6" style="background-color: aqua;">
+    <app-list [queriesList]="testService.queries" 
+    (selectedQueryEvent)="querySelected($event)"></app-list>
+ </div>
+ <div class="col-6" style="background-color: rgb(207, 205, 196);">
+    <app-details *ngIf="selectedQuery" [query]="selectedQuery" (editQueryevent)="editQuery($event)"></app-details> 
+ </div>
+</div>
+
+<div class="row">
+   <app-query-form (newQueryEvent)="newQuery($event)" [query]="editedQuery" [modif]="modif"></app-query-form>
+
+</div>

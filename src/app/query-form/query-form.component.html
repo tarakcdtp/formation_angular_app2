@@ -1,0 +1,38 @@
+<ng-container *ngIf="query">
+<div>
+    <label class="col-4">ID : </label>
+    <input name="id" [(ngModel)]="query.id" type="text" />
+</div>
+<div>
+    <label class="col-4">name : </label>
+    <input name="name" [(ngModel)]="query.name" type="text" />
+</div>
+<div>
+    <label class="col-4">startDate : </label>
+    <input name="startDate" [(ngModel)]="query.startDate" type="number" />
+</div>
+<div>
+    <label class="col-4">endDate : </label>
+    <input name="endDate" [(ngModel)]="query.endDate" type="number" />
+</div>
+<div>
+    <label class="col-4">status : </label>
+    <select name="status" [(ngModel)]="query.status">
+        <option></option>
+     <option value="private">private</option>
+     <option value="public">public</option>
+    </select>
+</div>
+<div>
+    <label class="col-4">domain : </label>
+    <select name="domain" [(ngModel)]="query.domain">
+        <option></option>
+     <option value="mission">mission</option>
+     <option value="etablissement">etablissement</option>
+    </select>
+</div>
+<hr/>
+<button class="btn btn-primary" (click)="addQuery()">{{ !modif ? "Sauvegarder" : "modifier"}}</button>
+<button class="btn btn-danger" (click)="cancel()">Annuler</button>
+{{query | json}} <br/> 
+</ng-container>X = {{testService.x}}

@@ -1,0 +1,4 @@
+<div class="alert" [ngClass]="{'alert-success':isOdd,'alert-info':isEven}" (click)="selectQuery()">
+    <ng-content></ng-content> : 
+    {{queryItem.name | titlecase}} odd={{isOdd}} even={{isEven}}</div>
+ 
