@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Query } from '../query';
 import { TestService } from '../test.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-query-form',
@@ -10,19 +11,30 @@ import { TestService } from '../test.service';
 })
 export class QueryFormComponent implements OnInit {
 
-  constructor(public testService: TestService) {
+  id!: string | null;
+  constructor(public testService: TestService,private router : Router,private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    if (!this.query) this.query=new Query();
-  }
- 
-  @Input() query: Query = new Query();
- @Output() newQueryEvent=new EventEmitter();
+    if (!this.query) this.query = new Query();
+    this.activatedRoute.paramMap.subscribe(params => {
+      if (params.has('id')) {
+        this.id = params.get('id');
+        this.query = this.testService.getQueryById(this.id)
+        this.modif = true;
+      }
+  });
+}
+  query!: Query | undefined;
+  //@Input() query: Query = new Query();
+  @Output() newQueryEvent=new EventEmitter();
+  
   addQuery() {
-  this.newQueryEvent.emit(this.query);
+  this.testService.newQuery(this.query);
+  this.router.navigate(['list']);
   }
+  
   cancel() {
     this.modif=false;
     this.query=new Query();
@@ -30,4 +42,3 @@ export class QueryFormComponent implements OnInit {
 
   @Input() modif : boolean=false;
 }
- 

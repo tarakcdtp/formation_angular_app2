@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Query } from '../query';
 import { TestService } from '../test.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -8,7 +9,7 @@ import { TestService } from '../test.service';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent {
-  constructor() {
+  constructor(private testService : TestService,private router:Router) {
 
   }
  @Input() queryItem!: Query;
@@ -16,6 +17,8 @@ export class ItemComponent {
  @Input() isOdd!:boolean;
  @Input() isEven!:boolean;
  selectQuery() {
-   this.selectEvent.emit(this.queryItem);
+  //this.testService.query=this.queryItem;
+  this.router.navigate(['show', this.queryItem.id]);
  }
+   
 }

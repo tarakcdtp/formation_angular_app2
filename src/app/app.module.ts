@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { YearpiPipe } from './yearpi.pipe';
 import { TestService } from './test.service';
 import { HmModule } from './hm/hm.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HmModule } from './hm/hm.module';
     ItemComponent,
     DetailsComponent,
     QueryFormComponent,
-    YearpiPipe
+    YearpiPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

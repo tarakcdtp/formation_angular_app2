@@ -17,6 +17,22 @@ export class TestService {
       endDate: 2024,
       status: 'public',
       domain: 'mission'
+    },
+    {
+      id: '478-013',
+      name: 'depense 2023-2024',
+      startDate: 2023,
+      endDate: 2024,
+      status: 'public',
+      domain: 'etablissement'
+    },
+    {
+      id: '478-014',
+      name: 'mission 2023-2024',
+      startDate: 2023,
+      endDate: 2024,
+      status: 'public',
+      domain: 'mission'
     }
   ];
   private _query!: Query | undefined;
@@ -37,5 +53,15 @@ export class TestService {
 
   get x() : number {
     return this._x;
+  }
+   
+  newQuery(query:any) {
+    let idx=this.queries.findIndex(q=>query.id==q.id);
+    if (idx>-1) {this.queries[idx]=query} 
+    else {this.queries.push(query);}
+  }
+
+  getQueryById(id: string | null) {
+    return this.queries.find((q) => q.id == id);
   }
 }
