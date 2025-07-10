@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Query } from '../query';
-import { TestService } from '../test.service';
+import { Query } from './classes/query';
+import { TestService } from '../services/test.service';
 
 @Component({
   selector: 'app-queries',

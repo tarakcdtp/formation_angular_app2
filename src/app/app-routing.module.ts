@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QueriesComponent } from './queries/queries.component';
-import { QueryFormComponent } from './query-form/query-form.component';
-import { ListComponent } from './list/list.component';
-import { DetailsComponent } from './details/details.component';
+
 import { HomeComponent } from './home/home.component';
+import { QueriesModule } from './queries/queries.module';
+import { AuthModule } from './auth/auth.module';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
@@ -12,21 +12,16 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'add',
-    component: QueryFormComponent
+    path: 'queries',
+    component : LayoutComponent,
+    loadChildren: () => import('./queries/queries.module').then((m) => QueriesModule)
+
   },
   {
-    path: 'list',
-    component: ListComponent
-  },
-  {
-    path: 'show/:id',
-    component: DetailsComponent
-  },
-  {
-    path: 'edit/:id',
-    component: QueryFormComponent
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => AuthModule)
   }
+
 ];
 
 @NgModule({
